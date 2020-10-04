@@ -1,0 +1,597 @@
+<html><head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Campus Explorer</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="bundle.css" rel="stylesheet">
+</head>
+<body class="bootstrap loaded-initially" data-tabs="courses,rooms">
+<script type="text/javascript" src="bundle.js"></script><div id="wrapper">
+    <div id="nav-container">
+        <div class="logo">CampusExplorer</div>
+        <nav class="nav">
+            <a class="nav-item tab" data-type="plain" href="#tab-plain">Plain</a>
+            <a class="nav-item tab" data-type="courses" href="#tab-courses">Courses</a>
+            <a class="nav-item tab active" data-type="rooms" href="#tab-rooms">Rooms</a>
+        </nav>
+    </div>
+
+    <div id="content-container">
+        <div id="left-container">
+            <div id="form-container">
+                <div class="tab-panel" id="tab-plain" data-type="plain">
+                    <form data-type="plain">
+                        <div class="form-group plain">
+                            <legend>Plain Query</legend>
+                            <textarea class="form-control code" id="codemirror-plain-textarea" rows="3" style="display: none;"></textarea><div class="CodeMirror cm-s-default" style="width: 100%; height: 500px;"><div style="overflow: hidden; position: relative; width: 3px; height: 0px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true"><div style="min-width: 1px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true"><div style="height: 100%; min-height: 1px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-width: 3px;"><div style="position: relative;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"><pre class="CodeMirror-line" role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" style="display: inline-block; width: 1px; margin-right: -1px;">&nbsp;</span></span></pre></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"></div><div class="CodeMirror-code" role="presentation"></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px;"></div><div class="CodeMirror-gutters" style="display: none;"></div></div></div>
+                        </div>
+                    </form>                </div>
+                <div class="tab-panel" id="tab-courses" data-type="courses">
+                    <form data-type="courses">
+                        <div class="form-group conditions">
+                            <legend>Conditions</legend>
+                            <div class="control-group condition-type">
+                                <div class="control conditions-all-radio">
+                                    <input id="courses-conditiontype-all" name="conditionType" value="all" type="radio" checked="checked">
+                                    <label for="courses-conditiontype-all">All of the following</label>
+                                </div>
+                                <div class="control conditions-any-radio">
+                                    <input id="courses-conditiontype-any" name="conditionType" value="any" type="radio">
+                                    <label for="courses-conditiontype-any">Any of the following</label>
+                                </div>
+                                <div class="control conditions-none-radio">
+                                    <input id="courses-conditiontype-none" name="conditionType" value="none" type="radio">
+                                    <label for="courses-conditiontype-none">None of the following</label>
+                                </div>
+                            </div>
+                            <div class="conditions-container"><div class="control-group condition">
+                                <div class="control not">
+                                    <input type="checkbox">
+                                    <label>Not</label>
+                                </div>
+                                <div class="control fields">
+                                    <select>
+                                        <option value="audit">
+                                            Audit
+                                        </option>                <option value="avg">
+                                        Average
+                                    </option>                <option value="dept" selected="selected">
+                                        Department
+                                    </option>                <option value="fail">
+                                        Fail
+                                    </option>                <option value="id">
+                                        ID
+                                    </option>                <option value="instructor">
+                                        Instructor
+                                    </option>                <option value="pass">
+                                        Pass
+                                    </option>                <option value="title">
+                                        Title
+                                    </option>                <option value="uuid">
+                                        UUID
+                                    </option>                <option value="year">
+                                        Year
+                                    </option>    </select>
+                                </div>
+                                <div class="control operators">
+                                    <select>
+                                        <option value="EQ">
+                                            EQ
+                                        </option>                <option value="GT">
+                                        GT
+                                    </option>                <option value="IS" selected="selected">
+                                        IS
+                                    </option>                <option value="LT">
+                                        LT
+                                    </option>    </select>
+                                </div>
+                                <div class="control term">
+                                    <input type="text" value="cpsc">
+                                </div>    <a class="icon icon-minus" href="#"></a>
+                            </div></div>
+                            <div class="icon-container"><a class="icon icon-plus" href="#"></a></div>
+                        </div>
+                        <div class="form-group columns">
+                            <legend>Columns</legend>
+                            <div class="control-group">
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-columns-field-audit" data-key="audit" value="audit" checked="checked">
+                                    <label for="courses-columns-field-audit">Audit</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-columns-field-avg" data-key="avg" value="avg">
+                                    <label for="courses-columns-field-avg">Average</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-columns-field-dept" data-key="dept" value="dept">
+                                    <label for="courses-columns-field-dept">Department</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-columns-field-fail" data-key="fail" value="fail">
+                                    <label for="courses-columns-field-fail">Fail</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-columns-field-id" data-key="id" value="id">
+                                    <label for="courses-columns-field-id">ID</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-columns-field-instructor" data-key="instructor" value="instructor" checked="checked">
+                                    <label for="courses-columns-field-instructor">Instructor</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-columns-field-pass" data-key="pass" value="pass">
+                                    <label for="courses-columns-field-pass">Pass</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-columns-field-title" data-key="title" value="title">
+                                    <label for="courses-columns-field-title">Title</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-columns-field-uuid" data-key="uuid" value="uuid">
+                                    <label for="courses-columns-field-uuid">UUID</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-columns-field-year" data-key="year" value="year">
+                                    <label for="courses-columns-field-year">Year</label>
+                                </div>
+                                <div class="control transformation">
+                                    <input type="checkbox" data-key="" value="">
+                                    <label></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group order">
+                            <legend>Order</legend>
+                            <div class="control-group">
+                                <div class="control order fields">
+                                    <select multiple="">
+                                        <option value="audit">
+                                            Audit
+                                        </option>                <option value="avg">
+                                        Average
+                                    </option>                <option value="dept">
+                                        Department
+                                    </option>                <option value="fail" selected="selected">
+                                        Fail
+                                    </option>                <option value="id">
+                                        ID
+                                    </option>                <option value="instructor">
+                                        Instructor
+                                    </option>                <option value="pass">
+                                        Pass
+                                    </option>                <option value="title">
+                                        Title
+                                    </option>                <option value="uuid">
+                                        UUID
+                                    </option>                <option value="year">
+                                        Year
+                                    </option>    <option class="transformation" value=""></option></select>
+                                </div>
+                                <div class="control descending">
+                                    <input type="checkbox" id="courses-order">
+                                    <label for="courses-order">Descending</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group groups">
+                            <legend>Groups</legend>
+                            <div class="control-group">
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-groups-field-audit" data-key="audit" value="audit">
+                                    <label for="courses-groups-field-audit">Audit</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-groups-field-avg" data-key="avg" value="avg">
+                                    <label for="courses-groups-field-avg">Average</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-groups-field-dept" data-key="dept" value="dept">
+                                    <label for="courses-groups-field-dept">Department</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-groups-field-fail" data-key="fail" value="fail">
+                                    <label for="courses-groups-field-fail">Fail</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-groups-field-id" data-key="id" value="id">
+                                    <label for="courses-groups-field-id">ID</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-groups-field-instructor" data-key="instructor" value="instructor">
+                                    <label for="courses-groups-field-instructor">Instructor</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-groups-field-pass" data-key="pass" value="pass">
+                                    <label for="courses-groups-field-pass">Pass</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-groups-field-title" data-key="title" value="title">
+                                    <label for="courses-groups-field-title">Title</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-groups-field-uuid" data-key="uuid" value="uuid">
+                                    <label for="courses-groups-field-uuid">UUID</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="courses-groups-field-year" data-key="year" value="year">
+                                    <label for="courses-groups-field-year">Year</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group transformations">
+                            <legend>Transformations</legend>
+                            <div class="transformations-container"><div class="control-group transformation">
+                                <div class="control term">
+                                    <input type="text">
+                                </div>    <div class="control operators">
+                                <select>
+                                    <option value="COUNT" selected="selected">
+                                        COUNT
+                                    </option>                <option value="AVG">
+                                    AVG
+                                </option>                <option value="MAX">
+                                    MAX
+                                </option>                <option value="MIN">
+                                    MIN
+                                </option>                <option value="SUM">
+                                    SUM
+                                </option>    </select>
+                            </div>
+                                <div class="control fields">
+                                    <select>
+                                        <option value="audit" selected="selected">
+                                            Audit
+                                        </option>                <option value="avg">
+                                        Average
+                                    </option>                <option value="dept">
+                                        Department
+                                    </option>                <option value="fail">
+                                        Fail
+                                    </option>                <option value="id">
+                                        ID
+                                    </option>                <option value="instructor">
+                                        Instructor
+                                    </option>                <option value="pass">
+                                        Pass
+                                    </option>                <option value="title">
+                                        Title
+                                    </option>                <option value="uuid">
+                                        UUID
+                                    </option>                <option value="year">
+                                        Year
+                                    </option>    </select>
+                                </div>
+                                <a class="icon icon-minus" href="#"></a>
+                            </div></div>
+                            <div class="icon-container"><a class="icon icon-plus" href="#"></a></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-panel active" id="tab-rooms" data-type="rooms">
+                    <form data-type="rooms">
+                        <div class="form-group conditions">
+                            <legend>Conditions</legend>
+                            <div class="control-group condition-type">
+                                <div class="control conditions-all-radio">
+                                    <input id="rooms-conditiontype-all" name="conditionType" value="all" type="radio">
+                                    <label for="rooms-conditiontype-all">All of the following</label>
+                                </div>
+                                <div class="control conditions-any-radio">
+                                    <input id="rooms-conditiontype-any" name="conditionType" value="any" type="radio" checked="checked">
+                                    <label for="rooms-conditiontype-any">Any of the following</label>
+                                </div>
+                                <div class="control conditions-none-radio">
+                                    <input id="rooms-conditiontype-none" name="conditionType" value="none" type="radio">
+                                    <label for="rooms-conditiontype-none">None of the following</label>
+                                </div>
+                            </div>
+                            <div class="conditions-container"><div class="control-group condition">
+                                <div class="control not">
+                                    <input type="checkbox">
+                                    <label>Not</label>
+                                </div>
+                                <div class="control fields">
+                                    <select>
+                                        <option value="address">
+                                            Address
+                                        </option>                <option value="fullname">
+                                        Full Name
+                                    </option>                <option value="furniture">
+                                        Furniture
+                                    </option>                <option value="href">
+                                        Link
+                                    </option>                <option value="lat">
+                                        Latitude
+                                    </option>                <option value="lon">
+                                        Longitude
+                                    </option>                <option value="name">
+                                        Name
+                                    </option>                <option value="number">
+                                        Number
+                                    </option>                <option value="seats" selected="selected">
+                                        Seats
+                                    </option>                <option value="shortname">
+                                        Short Name
+                                    </option>                <option value="type">
+                                        Type
+                                    </option>    </select>
+                                </div>
+                                <div class="control operators">
+                                    <select>
+                                        <option value="EQ">
+                                            EQ
+                                        </option>                <option value="GT" selected="selected">
+                                        GT
+                                    </option>                <option value="IS">
+                                        IS
+                                    </option>                <option value="LT">
+                                        LT
+                                    </option>    </select>
+                                </div>
+                                <div class="control term">
+                                    <input type="text" value="90">
+                                </div>    <a class="icon icon-minus" href="#"></a>
+                            </div><div class="control-group condition">
+                                <div class="control not">
+                                    <input type="checkbox">
+                                    <label>Not</label>
+                                </div>
+                                <div class="control fields">
+                                    <select>
+                                        <option value="address">
+                                            Address
+                                        </option>                <option value="fullname">
+                                        Full Name
+                                    </option>                <option value="furniture">
+                                        Furniture
+                                    </option>                <option value="href">
+                                        Link
+                                    </option>                <option value="lat">
+                                        Latitude
+                                    </option>                <option value="lon">
+                                        Longitude
+                                    </option>                <option value="name">
+                                        Name
+                                    </option>                <option value="number">
+                                        Number
+                                    </option>                <option value="seats">
+                                        Seats
+                                    </option>                <option value="shortname" selected="selected">
+                                        Short Name
+                                    </option>                <option value="type">
+                                        Type
+                                    </option>    </select>
+                                </div>
+                                <div class="control operators">
+                                    <select>
+                                        <option value="EQ">
+                                            EQ
+                                        </option>                <option value="GT">
+                                        GT
+                                    </option>                <option value="IS" selected="selected">
+                                        IS
+                                    </option>                <option value="LT">
+                                        LT
+                                    </option>    </select>
+                                </div>
+                                <div class="control term">
+                                    <input type="text" value="DMP">
+                                </div>    <a class="icon icon-minus" href="#"></a>
+                            </div></div>
+                            <div class="icon-container"><a class="icon icon-plus" href="#"></a></div>
+                        </div>
+                        <div class="form-group columns">
+                            <legend>Columns</legend>
+                            <div class="control-group">
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-columns-field-address" data-key="address" value="address">
+                                    <label for="rooms-columns-field-address">Address</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-columns-field-fullname" data-key="fullname" value="fullname">
+                                    <label for="rooms-columns-field-fullname">Full Name</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-columns-field-furniture" data-key="furniture" value="furniture">
+                                    <label for="rooms-columns-field-furniture">Furniture</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-columns-field-href" data-key="href" value="href">
+                                    <label for="rooms-columns-field-href">Link</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-columns-field-lat" data-key="lat" value="lat">
+                                    <label for="rooms-columns-field-lat">Latitude</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-columns-field-lon" data-key="lon" value="lon">
+                                    <label for="rooms-columns-field-lon">Longitude</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-columns-field-name" data-key="name" value="name">
+                                    <label for="rooms-columns-field-name">Name</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-columns-field-number" data-key="number" value="number">
+                                    <label for="rooms-columns-field-number">Number</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-columns-field-seats" data-key="seats" value="seats" checked="checked">
+                                    <label for="rooms-columns-field-seats">Seats</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-columns-field-shortname" data-key="shortname" value="shortname" checked="checked">
+                                    <label for="rooms-columns-field-shortname">Short Name</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-columns-field-type" data-key="type" value="type">
+                                    <label for="rooms-columns-field-type">Type</label>
+                                </div>
+                                <div class="control transformation">
+                                    <input type="checkbox" data-key="avgLon" value="avgLon" checked="checked">
+                                    <label>avgLon</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group order">
+                            <legend>Order</legend>
+                            <div class="control-group">
+                                <div class="control order fields">
+                                    <select multiple="">
+                                        <option value="address">
+                                            Address
+                                        </option>                <option value="fullname">
+                                        Full Name
+                                    </option>                <option value="furniture">
+                                        Furniture
+                                    </option>                <option value="href">
+                                        Link
+                                    </option>                <option value="lat">
+                                        Latitude
+                                    </option>                <option value="lon">
+                                        Longitude
+                                    </option>                <option value="name">
+                                        Name
+                                    </option>                <option value="number">
+                                        Number
+                                    </option>                <option value="seats">
+                                        Seats
+                                    </option>                <option value="shortname">
+                                        Short Name
+                                    </option>                <option value="type">
+                                        Type
+                                    </option>    <option class="transformation" value="avgLon" selected="selected">avgLon</option></select>
+                                </div>
+                                <div class="control descending">
+                                    <input type="checkbox" id="rooms-order">
+                                    <label for="rooms-order">Descending</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group groups">
+                            <legend>Groups</legend>
+                            <div class="control-group">
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-groups-field-address" data-key="address" value="address">
+                                    <label for="rooms-groups-field-address">Address</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-groups-field-fullname" data-key="fullname" value="fullname">
+                                    <label for="rooms-groups-field-fullname">Full Name</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-groups-field-furniture" data-key="furniture" value="furniture">
+                                    <label for="rooms-groups-field-furniture">Furniture</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-groups-field-href" data-key="href" value="href">
+                                    <label for="rooms-groups-field-href">Link</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-groups-field-lat" data-key="lat" value="lat">
+                                    <label for="rooms-groups-field-lat">Latitude</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-groups-field-lon" data-key="lon" value="lon">
+                                    <label for="rooms-groups-field-lon">Longitude</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-groups-field-name" data-key="name" value="name">
+                                    <label for="rooms-groups-field-name">Name</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-groups-field-number" data-key="number" value="number">
+                                    <label for="rooms-groups-field-number">Number</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-groups-field-seats" data-key="seats" value="seats" checked="checked">
+                                    <label for="rooms-groups-field-seats">Seats</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-groups-field-shortname" data-key="shortname" value="shortname" checked="checked">
+                                    <label for="rooms-groups-field-shortname">Short Name</label>
+                                </div>
+                                <div class="control field">
+                                    <input type="checkbox" id="rooms-groups-field-type" data-key="type" value="type">
+                                    <label for="rooms-groups-field-type">Type</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group transformations">
+                            <legend>Transformations</legend>
+                            <div class="transformations-container"><div class="control-group transformation">
+                                <div class="control term">
+                                    <input type="text" value="avgLon">
+                                </div>    <div class="control operators">
+                                <select>
+                                    <option value="COUNT" selected="selected">
+                                        COUNT
+                                    </option>                <option value="AVG">
+                                    AVG
+                                </option>                <option value="MAX">
+                                    MAX
+                                </option>                <option value="MIN">
+                                    MIN
+                                </option>                <option value="SUM">
+                                    SUM
+                                </option>    </select>
+                            </div>
+                                <div class="control fields">
+                                    <select>
+                                        <option value="address">
+                                            Address
+                                        </option>                <option value="fullname">
+                                        Full Name
+                                    </option>                <option value="furniture">
+                                        Furniture
+                                    </option>                <option value="href">
+                                        Link
+                                    </option>                <option value="lat">
+                                        Latitude
+                                    </option>                <option value="lon" selected="selected">
+                                        Longitude
+                                    </option>                <option value="name">
+                                        Name
+                                    </option>                <option value="number">
+                                        Number
+                                    </option>                <option value="seats">
+                                        Seats
+                                    </option>                <option value="shortname">
+                                        Short Name
+                                    </option>                <option value="type">
+                                        Type
+                                    </option>    </select>
+                                </div>
+                                <a class="icon icon-minus" href="#"></a>
+                            </div></div>
+                            <div class="icon-container"><a class="icon icon-plus" href="#"></a></div>
+                        </div>
+                    </form>
+                </div>
+                <div id="submit-container">
+                    <a class="copy-html btn" href="#">Copy HTML</a>
+                    <a id="submit-button" type="submit" class="submit btn" href="#">Submit</a>
+                </div>
+            </div>
+        </div>
+        <div id="right-container">
+            <div id="global-hint-container">
+                This UI may not handle all possible error cases correctly. When in doubt, please follow the spec!
+            </div>
+            <div id="result-container"><div class="summary error">
+                <span>Error occurred</span>
+                <a class="copy-result" href="#">Copy JSON</a>
+            </div>
+                <div class="error-message">
+                    TOO BIGGG
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="query-builder.js"></script>
+<script type="text/javascript" src="query-sender.js"></script>
+<script type="text/javascript" src="query-index.js"></script>
+
+
+<textarea readonly="" style="font-size: 12pt; border: 0px; padding: 0px; margin: 0px; position: absolute; left: -9999px; top: 267px;"></textarea><textarea readonly="" style="font-size: 12pt; border: 0px; padding: 0px; margin: 0px; position: absolute; left: -9999px; top: 267px;"></textarea><textarea readonly="" style="font-size: 12pt; border: 0px; padding: 0px; margin: 0px; position: absolute; left: -9999px; top: 267px;"></textarea><textarea readonly="" style="font-size: 12pt; border: 0px; padding: 0px; margin: 0px; position: absolute; left: -9999px; top: 267px;"></textarea><textarea readonly="" style="font-size: 12pt; border: 0px; padding: 0px; margin: 0px; position: absolute; left: -9999px; top: 267px;"></textarea></body></html>
